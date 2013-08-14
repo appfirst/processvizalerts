@@ -1,4 +1,5 @@
-processvizalerts
-================
+Process Viz During Alerts
+=========================
 
-See the processes during the time an alert is triggered
+This application visualizes the processes consuming CPU and memory during the time an alert is triggered. 
+
