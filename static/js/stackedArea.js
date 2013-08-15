@@ -28,9 +28,9 @@ nv.models.stackedArea = function() {
     .sizeDomain([2.2,2.2]) // all the same size by default
     ;
 
-<<<<<<< HEAD
+
  
-=======
+
   /************************************
    * offset:
    *   'wiggle' (stream)
@@ -42,13 +42,13 @@ nv.models.stackedArea = function() {
    *   'inside-out' (stream)
    *   'default' (input order)
    ************************************/
->>>>>>> 3093b28347e284477bee106a0d246ac981ef67c0
+
 
   //============================================================
 
     var StackedChart={};
     function initializevars(){
-        console.log("vars Initializing");
+       
          StackedChart = {
         alerthistories:[],
         serverID:0,
@@ -70,13 +70,8 @@ function getProcessData(server){
 	dataType: "json",
 	success: function(data)  {
 	    var json_data = eval(data);
-<<<<<<< HEAD
+
 	    StackedChart.serverproc[0] = (json_data);
-=======
-	    HiveplotVars.serverproc[0] = (json_data);
-	    console.log("server process Data success");
-	   // appendDataToDrillDownMenu();
->>>>>>> 3093b28347e284477bee106a0d246ac981ef67c0
 	    getProcessDetail();
 
 	},
@@ -88,11 +83,10 @@ function getProcessData(server){
     function getAlertHistories(alert){
     $.ajax({
 	type: "GET",
-<<<<<<< HEAD
+
 	url: "/main/api/alerthistories/",
-=======
-	url: "/hiveplot/api/server/process/data",
->>>>>>> 3093b28347e284477bee106a0d246ac981ef67c0
+
+
 	data: {'subject': alert.subject},
 
 	dataType: "json",
@@ -126,7 +120,7 @@ function getProcessData(server){
 
 }
 
-<<<<<<< HEAD
+
 function getServerData(serverId) {
     var server = {};
     for (i = 0; i < appVars.servers.length; i++) {
@@ -139,8 +133,7 @@ function getServerData(serverId) {
     return server;
 }
 
-=======
->>>>>>> 3093b28347e284477bee106a0d246ac981ef67c0
+
   function chart(selection) {
     selection.each(function(data) {
       var availableWidth = width - margin.left - margin.right,
@@ -422,8 +415,5 @@ function getServerData(serverId) {
 
 
   return chart;
-<<<<<<< HEAD
 
-=======
->>>>>>> 3093b28347e284477bee106a0d246ac981ef67c0
 }
