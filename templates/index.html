@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title> Process Visualization During Alerts </title>
+        <link rel="stylesheet" href="../static/css/base.css"
+
+          type="text/css" />
+        <link rel="stylesheet" href="../static/css/application.css"
+
+          type="text/css" />
+        <link rel="stylesheet" href="../static/css/preview.css"
+          type="text/css" />
+	</head>
+
+	<body onLoad="sizeChange()">
+
+    <script type='text/javascript' src='../static/js/d3.v3.js'></script>
+    <div class="sidebar">
+      <ul class="sidebar sidebar-tabs">
+        <li><a href="#" class="server-menu">Servers</a></li>
+
+      </ul>
+
+      <div id='server-container' >
+        <div class="btn-group toggleButton">
+          <button type="button" class="btn btn-primary dropdown-toggle btn-small toggleButtonInner" data-toggle="dropdown">
+          Select a Server <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+          </ul>
+        </div>
+        <input id="search_input" class="form-control server-menu-text-box" placeholder="Filter...">
+        <ul id="search_list" class="list-group">
+        </ul>
+      </div>
+
+
+    </div>
+
+      <div id="container-container">
+        <div id='container'>
+
+        </div>
+      </div>
+
+</body>
+</html>
