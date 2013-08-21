@@ -28,9 +28,6 @@ nv.models.stackedArea = function() {
     .sizeDomain([2.2,2.2]) // all the same size by default
     ;
 
-
- 
-
   /************************************
    * offset:
    *   'wiggle' (stream)
@@ -43,12 +40,11 @@ nv.models.stackedArea = function() {
    *   'default' (input order)
    ************************************/
 
-
   //============================================================
 
     var StackedChart={};
     function initializevars(){
-       
+        console.log("vars Initializing");
          StackedChart = {
         alerthistories:[],
         serverID:0,
@@ -70,8 +66,9 @@ function getProcessData(server){
 	dataType: "json",
 	success: function(data)  {
 	    var json_data = eval(data);
-
-	    StackedChart.serverproc[0] = (json_data);
+	    HiveplotVars.serverproc[0] = (json_data);
+	    console.log("server process Data success");
+	   // appendDataToDrillDownMenu();
 	    getProcessDetail();
 
 	},
@@ -83,10 +80,7 @@ function getProcessData(server){
     function getAlertHistories(alert){
     $.ajax({
 	type: "GET",
-
-	url: "/main/api/alerthistories/",
-
-
+	url: "/hiveplot/api/server/process/data",
 	data: {'subject': alert.subject},
 
 	dataType: "json",
@@ -119,20 +113,6 @@ function getProcessData(server){
 
 
 }
-
-
-function getServerData(serverId) {
-    var server = {};
-    for (i = 0; i < appVars.servers.length; i++) {
-        if (StackedChart.servers[i].id == serverId) {
-            server = StackedChart.servers[i];
-            break;
-        }
-    }
-    
-    return server;
-}
-
 
   function chart(selection) {
     selection.each(function(data) {
@@ -415,5 +395,4 @@ function getServerData(serverId) {
 
 
   return chart;
-
 }

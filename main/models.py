@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class Servers(models.Model):
     server_id=models.CharField(max_length=20)
@@ -16,17 +17,16 @@ class AlertHistories(models.Model):
     subject=models.CharField(max_length=500)
 
     def __unicode__(self):
-        alert= self.start_time+"to"+self.end_time +"for" +self.subject
-        return alert
+        return self.subject
 
 class Processes(models.Model):
     uid=models.CharField(max_length=20)
     created_at = models.DateTimeField(auto_now_add = True)
     updated_at = models.DateTimeField(auto_now = True)
+    cpu_data=models.CharField(max_length=10)
+    memory_data=models.CharField(max_length=10)
 
     def __unicode__(self):
-        process = self.uid+"to"+self.end_time
+        process = self.uid+self.cpu_data+self.memory_data
         return process
 
-    def __datetime__(self):
-        return self.created_at

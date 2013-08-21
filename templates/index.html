@@ -1,5 +1,7 @@
-<html>
+<html lang="en">
+
 	<head>
+        <meta charset="utf-8">
 		<title> Process Visualization During Alerts </title>
         <link rel="stylesheet" href="../static/css/base.css"
 
@@ -9,28 +11,49 @@
           type="text/css" />
         <link rel="stylesheet" href="../static/css/preview.css"
           type="text/css" />
+        <script type = "text/javascript" src ="../static/js/d3.v3.js"></script>
+        <script type = "text/javascript" src ="../static/js/jquery-1.10.1.js"></script>
+        <script type = "text/javascript" src ="../static/js/jquery-ui.js"></script>
+        <script type = "text/javascript" src ="../static/js/jquery-ui.js"></script>
+        <script type = "text/javascript" src ="../static/js/fastlivefilter.js"> </script>
+        <script type = "text/javascript" src ="../static/js/dropdown.js"></script>
+        <script type = "text/javascript" src ="../static/js/jquery.ui.core.js"> </script>
+        <script type = "text/javascript" src ="../static/js/jquery-ui.js"></script>
+        <script type = "text/javascript" src ="../static/js/tooltip.js"> </script>
+        <script type = "text/javascript" src ="../static/js/jquery-ui.js"></script>
+        <script type = "text/javascript" src ="../static/js/processviz.js"> </script>
+        {% load chartit %}
+        {{ stackedchart|load_charts:"container" }}
 	</head>
 
 	<body onLoad="sizeChange()">
 
-    <script type='text/javascript' src='../static/js/d3.v3.js'></script>
+
     <div class="sidebar">
       <ul class="sidebar sidebar-tabs">
-        <li><a href="#" class="server-menu">Servers</a></li>
+        <li><a href="#" class="alerts">Recent Alerts</a></li>
+          {% for subject in alerthistories %}
+                <li>
+                    {% subject %}
+                </li>
+              {% endfor %}
 
       </ul>
 
       <div id='server-container' >
         <div class="btn-group toggleButton">
           <button type="button" class="btn btn-primary dropdown-toggle btn-small toggleButtonInner" data-toggle="dropdown">
-          Select a Server <span class="caret"></span>
+          Servers<span class="caret"></span>
           </button>
           <ul class="dropdown-menu">
+              {% for server in servers %}
+                <li>
+                    {% nickname %}
+                </li>
+              {% endfor %}
           </ul>
         </div>
-        <input id="search_input" class="form-control server-menu-text-box" placeholder="Filter...">
-        <ul id="search_list" class="list-group">
-        </ul>
+
       </div>
 
 
@@ -38,6 +61,8 @@
 
       <div id="container-container">
         <div id='container'>
+
+            <script src="../static/js/highcharts.js"></script>
 
         </div>
       </div>
